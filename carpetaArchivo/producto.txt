@@ -1,0 +1,62 @@
+[
+	{
+		"id": 1,
+		"title": "Samantha",
+		"price": 155000,
+		"thumbnail": "/urlProd"
+	},
+	{
+		"id": 2,
+		"title": "Samantha",
+		"price": 155000,
+		"thumbnail": "/urlProd"
+	},
+	{
+		"id": 3,
+		"title": "Samantha",
+		"price": 155000,
+		"thumbnail": "/urlProd"
+	},
+	{
+		"id": 4,
+		"title": "Samantha",
+		"price": 155000,
+		"thumbnail": "/urlProd"
+	},
+	{
+		"id": 5,
+		"title": "nuevoProd",
+		"price": 125000,
+		"thumbnail": "url/jjaja"
+	},
+	{
+		"id": 6,
+		"title": "nuevo titulo2",
+		"price": 15000,
+		"thumbnail": "url/rutaproducto"
+	},
+	{
+		"id": 7,
+		"title": "nuevo titulo2",
+		"price": 15000,
+		"thumbnail": "url/rutaproducto"
+	},
+	{
+		"id": 8,
+		"title": "nuevo titulo2",
+		"price": 15000,
+		"thumbnail": "url/rutaproducto"
+	},
+	{
+		"id": 9,
+		"title": "nuevo titulo2",
+		"price": 15000,
+		"thumbnail": "url/rutaproducto"
+	},
+	{
+		"id": 10,
+		"title": "nuevo titulo2",
+		"price": 15000,
+		"thumbnail": "url/rutaproducto"
+	}
+]
