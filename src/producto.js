@@ -62,49 +62,34 @@ class Producto {
         // Retrorna el registro ingresado
         console.log('nuevo reg ->', archivo);
         return archivo;
-       
+        
     } catch (error) {
         console.log('Error en archivo guardar', error);
     }
     }
-
+    
 
     async obtieneProductos() {    
-        return new Promise((resolve, reject) => {
+        return new Promise(async(resolve, reject) => {
             try {
-                Promise.resolve().then(() => {
-                    // Obtiene resultados de archivo txt
-                    return this.leer();
-                })
-                .then((productos) => {
-                    // Transforma resultados y los ingresa en el arreglo
-                    const resp = JSON.parse(productos);
-                    let lProd = [];
-                    lProd.push(...resp);
-                    resolve(lProd);
-                })
+                const productos = await this.leer();
+                const resp = JSON.parse(productos);
+                let lProd = [];
+                lProd.push(...resp);
+                resolve(lProd);
             } catch (error) {
-                console.log('La operación ingresada es invalida, usted debe ingresar <<suma>> ó <<resta>>');
+                console.log('La operación ingresada es invalida');
                 reject(error.messsage);
             }
         });
 
     }
 
-    async obtieneProductoxID(id) {
-        let lProd = [];
-        lProd = await this.obtieneProductos(); 
-        const result = lProd.find(x => x.id === id);
-        return result;
-    }
-
-    async ingresaProducto() {
-        const result = await this.guardar();
-        return result;
-    }
 }
 
+
 let prod = new Producto();
+let lProd = [];
 
 const obtieneProductos = async() => {
     const lProd = await prod.obtieneProductos();
@@ -112,22 +97,53 @@ const obtieneProductos = async() => {
 }
 
 const obtieneProductoxID = async(id) => {
-    const lProd = await prod.obtieneProductoxID(id);
-    return  lProd;
+    console.log('holi');
+    let lProd = [];
+    lProd = await prod.obtieneProductos(); 
+    const result = lProd.find(x => x.id === id);
+    return result;
 }
 
 const guardaProducto = async(producto) => {
-
     const sProd = new Producto(0,producto.title, producto.price, producto.thumbnail);
-    const result = await sProd.ingresaProducto();
+    const result = await sProd.guardar();
     return result
 }
 
+const actualizaProducto = async(id,title, price, thumbnail) => {
+    try {
+        let lProd = [];
+        lProd = await prod.obtieneProductos(); 
+        const rProd = lProd.find(x =>  x.id === id);
+        rProd.title = title;
+        rProd.price = price; 
+        rProd.thumbnail = thumbnail;
+
+        return rProd;
+    } catch (error) {
+        return null;
+    }
+    
+}
+
+const eliminaProducto = async(id) => {
+    let lProd = [];
+    lProd = await prod.obtieneProductos();
+    const index = lProd.findIndex((p) => {
+        return p.id === id;
+   })
+
+   if (index !== -1) lProd.splice(index, 1);
+   return lProd;
+
+}
 
 
 
 module.exports = {
     obtieneProductos,
     obtieneProductoxID,
-    guardaProducto
+    guardaProducto,
+    actualizaProducto,
+    eliminaProducto
 }

@@ -58,5 +58,35 @@
 		"title": "nuevo titulo2",
 		"price": 15000,
 		"thumbnail": "url/rutaproducto"
+	},
+	{
+		"id": 11
+	},
+	{
+		"id": 12
+	},
+	{
+		"id": 13
+	},
+	{
+		"id": 14
+	},
+	{
+		"id": 15
+	},
+	{
+		"id": 16
+	},
+	{
+		"id": 17
+	},
+	{
+		"id": 18
+	},
+	{
+		"id": 19,
+		"title": "sadsad",
+		"price": "44444",
+		"thumbnail": "dasdasdas"
 	}
 ]
