@@ -69,7 +69,7 @@ class Producto {
     }
     
 
-    async obtieneProductos() {    
+    async obtieneProductosBase() {    
         return new Promise(async(resolve, reject) => {
             try {
                 const productos = await this.leer();
@@ -79,6 +79,7 @@ class Producto {
                 resolve(lProd);
             } catch (error) {
                 console.log('La operación ingresada es invalida');
+                resolve(null);
                 reject(error.messsage);
             }
         });
@@ -88,20 +89,23 @@ class Producto {
 }
 
 
-let prod = new Producto();
-let lProd = [];
+const prod = new Producto();
 
 const obtieneProductos = async() => {
-    const lProd = await prod.obtieneProductos();
+    const lProd = prod.obtieneProductosBase();
     return lProd;
 }
 
 const obtieneProductoxID = async(id) => {
-    console.log('holi');
-    let lProd = [];
-    lProd = await prod.obtieneProductos(); 
-    const result = lProd.find(x => x.id === id);
-    return result;
+    try {
+       let data = [];
+       data = prod.obtieneProductosBase();
+       const result = data.find(x => Number(x.id) ==  Number(id));
+       return result;
+    } catch (error) {
+        console.log('ERROR -> ', error);
+    }
+
 }
 
 const guardaProducto = async(producto) => {

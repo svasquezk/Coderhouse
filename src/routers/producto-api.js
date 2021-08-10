@@ -25,7 +25,7 @@ router.get('/listar', (req, res) => {
 
 // Obtiene productos por id
 router.get('/listar/:id', (req, res) => {
-    const idProd = Number( req.params.id);
+    const idProd = Number(req.params.id);
 
     producto.obtieneProductoxID(idProd)
     .then((respProd) => {
@@ -37,7 +37,7 @@ router.get('/listar/:id', (req, res) => {
         res.json({
             resp : respProd
         });
-    }).catch(() => {
+    }).catch((m) => { 
         res.json({
             msj: 'Error al obtener registros'
         })
@@ -50,12 +50,16 @@ router.post('/guardar', (req, res) => {
  
     producto.guardaProducto(prod).then((result) => 
     { 
-        res.json({
-            id: result.id,
-            title: result.title,
-            price: result.price,
-            thumbnail: result.thumbnail
-        });
+        console.log('AQUI');
+        // Se redirecciona a la API Vista
+        res.redirect('/api/productos/vista');
+        // res.json({
+        //     id: result.id,
+        //     title: result.title,
+        //     price: result.price,
+        //     thumbnail: result.thumbnail
+        // });
+
     }).catch(() => {
         res.json({
             msj: 'Error al ingresar nuevo registro'
@@ -98,5 +102,26 @@ router.delete('/borrar/:id', async(req, res) => {
         })
     }
 })
+
+
+// config página principal de handlerbar
+router.get('/vista', async(req, res) => {
+    const lprod = await  producto.obtieneProductos();
+    if(!lprod) {
+        const listaProd = {
+            tieneProd : false,
+        }
+        res.render('main', listaProd); 
+    } else {
+        const listaProd = {
+            tieneProd : true,
+            lprod
+        }
+        res.render('main', listaProd); 
+    }
+    
+})
+
+
 
 module.exports = router;
