@@ -76,5 +76,11 @@
 		"title": "mochilas",
 		"price": "4560",
 		"thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/bag-pack-container-school-512.png"
+	},
+	{
+		"id": 14,
+		"title": "cliente",
+		"price": "15000",
+		"thumbnail": "https://cdn2.iconfinder.com/data/icons/chinese-culture-6/48/48-128.png"
 	}
 ]
