@@ -1,0 +1,54 @@
+html 
+  head 
+    title ejemplo3
+    link(rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous")
+  body
+    div(class="container")
+
+if listaProd.tieneProd
+ h3 Vista de Productos
+    table(class="table table-dark")
+     tr
+        th Nombre
+        th Precio
+        th Foto
+
+     each val in listaProd.lprod
+        tr
+         td(scope="col")= val.title
+         td(scope="col")= val.price
+         td(scope="col")
+          img(src=val.thumbnail class='icon-user icon-white' style="width: 5%;")        
+else
+ h3 Vista de Productos
+
+  
+
+
+//- <h3>Vista de Productos</h3>
+//- {{#if tieneProd}}
+//-     <table class="table table-dark">
+//-         <thead>
+//-             <tr>
+//-             <th scope="col">#</th>
+//-             <th scope="col">Nombre</th>
+//-             <th scope="col">Precio</th>
+//-             <th scope="col">Foto</th>
+//-             </tr>
+//-         </thead>
+//-         <tbody>
+//-             {{#each lprod }}
+//-             <tr>
+//-             <th scope="row"></th>
+//-                 <td>{{this.title}}</td>
+//-                 <td>{{this.price}}</td>
+//-                 <td style="width: 20%;"><img src={{this.thumbnail}} class='icon-user icon-white' style="width: 20%;"></td>
+//-             </tr>
+//-             {{/each}}
+//-         </tbody>
+//-     </table>
+//- {{else}}
+//-     <h1> No hay productos </h1>
+//- {{/if}}
+
+

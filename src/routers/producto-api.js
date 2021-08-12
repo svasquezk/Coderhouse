@@ -111,13 +111,13 @@ router.get('/vista', async(req, res) => {
         const listaProd = {
             tieneProd : false,
         }
-        res.render('main', listaProd); 
+        res.render('listaproductos', {listaProd}); 
     } else {
         const listaProd = {
             tieneProd : true,
             lprod
         }
-        res.render('main', listaProd); 
+        res.render('listaproductos', {listaProd}); 
     }
     
 })
