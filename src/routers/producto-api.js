@@ -50,7 +50,6 @@ router.post('/guardar', (req, res) => {
  
     producto.guardaProducto(prod).then((result) => 
     { 
-        console.log('AQUI');
         // Se redirecciona a la API Vista
         res.redirect('/api/productos/vista');
         // res.json({
