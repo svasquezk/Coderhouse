@@ -1,0 +1,65 @@
+<!-- CSS only -->
+
+<html>
+  <head>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="main.js"></script>
+    <script src="../views/main.hbs"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+
+  </head>
+
+  <body>
+    <div class="container">
+      <form onsubmit="return addproduct(this)">
+      <h2>Ingreso de productos</h2>
+    
+      <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Title producto</label>
+          <input type="text" class="form-control" name="title" id="title" placeholder="Title">
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Price producto</label>
+          <input type="text" class="form-control" name="price" id="price" placeholder="5000000">
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Thumbnail producto</label>
+          <input type="text" class="form-control" name="thumbnail" id="thumbnail" placeholder="Thumbnail">
+        </div>
+        <button type="submit" class="btn btn-primary">Enviar Producto</button>
+      </form>
+      <div id="messages"></div>
+    </div>
+
+    <script id="address-template" type="text/x-handlebars-template">
+      <div class="container">
+      <h3>Vista de Productos</h3>
+          <table class="table table-dark">
+              <thead>
+                  <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Nombre</th>
+                  <th scope="col">Precio</th>
+                  <th scope="col">Foto</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  {{#each lprod }}
+                  <tr>
+                  <th scope="row"></th>
+                      <td>{{this.title}}</td>
+                      <td>{{this.price}}</td>
+                      <td style="width: 20%;"><img src={{this.thumbnail}} class='icon-user icon-white' style="width: 20%;"></td>
+                  </tr>
+                  {{/each}}
+              </tbody>
+          </table>
+        </div>
+    </script>
+    
+    <!--Your new content will be displayed in here-->
+    <div class="content-placeholder" id="content-placeholder"></div>
+  </body>
+</html>
+

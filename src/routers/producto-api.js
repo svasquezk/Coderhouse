@@ -106,6 +106,7 @@ router.delete('/borrar/:id', async(req, res) => {
 
 // config página principal de handlerbar
 router.get('/vista', async(req, res) => {
+    console.log('*************************');
     const lprod = await  producto.obtieneProductos();
     if(!lprod) {
         const listaProd = {
@@ -121,6 +122,8 @@ router.get('/vista', async(req, res) => {
     }
     
 })
+
+
 
 
 
