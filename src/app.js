@@ -60,11 +60,10 @@ myWSServer.on('connection', (socket) => {
     })
 })
 
-
 // app.get('/', (req, res) => {
+//     console.log('--->');
 //     res.render('main')
 // })
-
 
 
 app.use(express.json());
