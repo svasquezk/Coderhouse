@@ -13,6 +13,8 @@ class Producto {
         this.thumbnail = thumbnail;
     }
 
+
+    
     // lee los registros guardados
     leer = async() => {
         try {
@@ -67,9 +69,9 @@ class Producto {
         console.log('Error en archivo guardar', error);
     }
     }
-    
 
-    async obtieneProductosBase() {    
+
+    obtieneProductosBase = async() => {    
         return new Promise(async(resolve, reject) => {
             try {
                 const productos = await this.leer();
@@ -86,17 +88,18 @@ class Producto {
 
     }
 
+
 }
 
 
 const prod = new Producto();
 
-const obtieneProductos = async() => {
+obtieneProductos = async() => {
     const lProd = prod.obtieneProductosBase();
     return lProd;
 }
 
-const obtieneProductoxID = async(id) => {
+obtieneProductoxID = async(id) => {
     try {
        let data = [];
        data = prod.obtieneProductosBase();
@@ -108,13 +111,13 @@ const obtieneProductoxID = async(id) => {
 
 }
 
-const guardaProducto = async(producto) => {
+guardaProducto = async(producto) => {
     const sProd = new Producto(0,producto.title, producto.price, producto.thumbnail);
     const result = await sProd.guardar();
     return result
 }
 
-const actualizaProducto = async(id,title, price, thumbnail) => {
+ actualizaProducto = async(id,title, price, thumbnail) => {
     try {
         let lProd = [];
         lProd = await prod.obtieneProductos(); 
@@ -130,7 +133,7 @@ const actualizaProducto = async(id,title, price, thumbnail) => {
     
 }
 
-const eliminaProducto = async(id) => {
+eliminaProducto = async(id) => {
     let lProd = [];
     lProd = await prod.obtieneProductos();
     const index = lProd.findIndex((p) => {
@@ -141,7 +144,6 @@ const eliminaProducto = async(id) => {
    return lProd;
 
 }
-
 
 
 module.exports = {

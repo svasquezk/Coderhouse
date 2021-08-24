@@ -93,7 +93,6 @@ socket.on('connectUser', (users) => {
 
 const outputUsers = (users) => {
   const arrayofUsers = users.map((aUser) => `<li>${aUser.username}</li>`);
-  console.log(arrayofUsers);
   chatMessages.innerHTML = arrayofUsers.join('');
 }
 
