@@ -2,7 +2,7 @@ import express from 'express';
 import http from 'http';
 import handlebars from 'express-handlebars';
 import { initWsServer } from './service/socket';
-import routerProductos from './routers/producto-api';
+// import routerProductos from './routers/producto-api';
 import path from 'path';
 
 

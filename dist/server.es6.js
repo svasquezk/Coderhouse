@@ -8,12 +8,11 @@ var _expressHandlebars = _interopRequireDefault(require("express-handlebars"));
 
 var _socket = require("./service/socket");
 
-var _productoApi = _interopRequireDefault(require("./routers/producto-api"));
-
 var _path = _interopRequireDefault(require("path"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
+// import routerProductos from './routers/producto-api';
 console.log('Hola Sandra');
 var app = (0, _express["default"])();
 
