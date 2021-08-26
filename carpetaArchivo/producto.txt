@@ -1,0 +1,122 @@
+[
+	{
+		"id": 1,
+		"timestamp": "urlActuañlizada2",
+		"nombre": "lapiz1Actu",
+		"descripcion": "desc",
+		"codigo": 8211,
+		"foto": "fotoActu",
+		"precio": 200,
+		"stock": 5
+	},
+	{
+		"id": 3,
+		"timestamp": "url",
+		"nombre": "lapiz3",
+		"descripcion": "desc",
+		"codigo": 211,
+		"foto": "foto",
+		"precio": 200,
+		"stock": 5
+	},
+	{
+		"id": 4,
+		"timestamp": "url",
+		"nombre": "lapiz4",
+		"descripcion": "desc",
+		"codigo": 211,
+		"foto": "foto",
+		"precio": 200,
+		"stock": 5
+	},
+	{
+		"id": 1,
+		"timestamp": "10/10/2020",
+		"nombre": "Producto1",
+		"descripcion": "desProd",
+		"codigo": 123,
+		"foto": "url",
+		"precio": 1200,
+		"stock": 20
+	},
+	{
+		"id": 6,
+		"timestamp": "10/10/2020",
+		"nombre": "Producto1",
+		"descripcion": "desProd",
+		"codigo": 123,
+		"foto": "url",
+		"precio": 1200,
+		"stock": 20
+	},
+	{
+		"id": 7,
+		"timestamp": "10/10/2020",
+		"nombre": "Producto1",
+		"descripcion": "desProd",
+		"codigo": 123,
+		"foto": "url",
+		"precio": 1200,
+		"stock": 20
+	},
+	{
+		"id": 8,
+		"timestamp": "10/10/2020",
+		"nombre": "Producto1",
+		"descripcion": "desProd",
+		"codigo": 123,
+		"foto": "url",
+		"precio": 1200,
+		"stock": 20
+	},
+	{
+		"id": 8,
+		"timestamp": "10/10/2020",
+		"nombre": "Producto1",
+		"descripcion": "desProd",
+		"codigo": 123,
+		"foto": "url",
+		"precio": 1200,
+		"stock": 20
+	},
+	{
+		"id": 9,
+		"timestamp": "10/10/2020",
+		"nombre": "Producto1",
+		"descripcion": "desProd",
+		"codigo": 123,
+		"foto": "url",
+		"precio": 1200,
+		"stock": 20
+	},
+	{
+		"id": 10,
+		"timestamp": "aa10/10/2020",
+		"nombre": "Producto1",
+		"descripcion": "desProd",
+		"codigo": 123,
+		"foto": "url",
+		"precio": 1200,
+		"stock": 20
+	},
+	{
+		"id": 11,
+		"timestamp": "aa10/10/2020",
+		"nombre": "Producto1",
+		"descripcion": "desProd",
+		"codigo": 123,
+		"foto": "url",
+		"precio": 1200,
+		"stock": 20
+	},
+	{
+		"id": 12,
+		"timestamp": "10/10/2020",
+		"nombre": "Producto1",
+		"descripcion": "desProd",
+		"codigo": 123,
+		"foto": "url",
+		"precio": 1200,
+		"stock": 20
+	}
+]

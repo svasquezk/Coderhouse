@@ -1,0 +1,58 @@
+[
+	{
+		"id": 1,
+		"timestamp": "20/07/2021",
+		"product": {
+			"id": 1,
+			"timestamp": "10/10/2020",
+			"nombre": "Producto1",
+			"descripcion": "desProd",
+			"codigo": 123,
+			"foto": "url",
+			"precio": 1200,
+			"stock": 20
+		}
+	},
+	{
+		"id": 2,
+		"timestamp": "20/07/2021",
+		"product": {
+			"id": 1,
+			"timestamp": "10/10/2020",
+			"nombre": "Producto1",
+			"descripcion": "desProd",
+			"codigo": 123,
+			"foto": "url",
+			"precio": 1200,
+			"stock": 20
+		}
+	},
+	{
+		"id": 3,
+		"timestamp": "20/07/2021",
+		"product": {
+			"id": 1,
+			"timestamp": "10/10/2020",
+			"nombre": "Producto1",
+			"descripcion": "desProd",
+			"codigo": 123,
+			"foto": "url",
+			"precio": 1200,
+			"stock": 20
+		}
+	},
+	{
+		"id": 4,
+		"timestamp": "20/07/2021",
+		"product": {
+			"id": 1,
+			"timestamp": "10/10/2020",
+			"nombre": "Producto1",
+			"descripcion": "desProd",
+			"codigo": 123,
+			"foto": "url",
+			"precio": 1200,
+			"stock": 20
+		}
+	}
+]
