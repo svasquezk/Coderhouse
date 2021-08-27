@@ -27,8 +27,7 @@ class Producto {
 
     // Valida ingreso de datos al agregar un producto
     checkAddProduct = (req: Request, res: Response, next: NextFunction) => {
-            const {timestamp, 
-                    nombre, 
+            const { nombre, 
                     descripcion,
                     codigo,
                     foto,
@@ -37,14 +36,14 @@ class Producto {
              } = req.body.product || req.body;
 
        //Valida el campo fecha
-       let valFecha = moment(timestamp, 'DD/MM/YYYY',true).isValid();
-       if(!valFecha) {
-            return res.status(400).json({
-                msg: 'Campo timestamp es invalidos, el formato aceptado es DD/MM/YYY'
-            });
-       }
+    //    let valFecha = moment(timestamp, 'DD/MM/YYYY',true).isValid();
+    //    if(!valFecha) {
+    //         return res.status(400).json({
+    //             msg: 'Campo timestamp es invalidos, el formato aceptado es DD/MM/YYY'
+    //         });
+    //    }
 
-        if(!timestamp || !nombre || !descripcion || !codigo || !foto || !precio || !stock ||
+        if(!nombre || !descripcion || !codigo || !foto || !precio || !stock ||
             typeof nombre !== 'string' ||  typeof descripcion !== 'string' ||
             isNaN(codigo) || typeof foto !== 'string' ||
             isNaN(precio) || isNaN(stock)){
@@ -59,8 +58,7 @@ class Producto {
     // Valida el ingreso de datos a actualizar
     checkUpdateProduct = (req: Request, res: Response, next: NextFunction) => {
         const id = Number(req.params.id)
-        const {timestamp, 
-                nombre, 
+        const { nombre, 
                 descripcion,
                 codigo,
                 foto,
@@ -74,16 +72,16 @@ class Producto {
             });
         }
 
-       //Valida el campo fecha
-       let valFecha = moment(timestamp, 'DD/MM/YYYY',true).isValid();
-       if(!valFecha) {
-            return res.status(400).json({
-                msg: 'Campo timestamp es invalidos, el formato aceptado es DD/MM/YYY'
-            });
-       }
+    //    //Valida el campo fecha
+    //    let valFecha = moment(timestamp, 'DD/MM/YYYY',true).isValid();
+    //    if(!valFecha) {
+    //         return res.status(400).json({
+    //             msg: 'Campo timestamp es invalidos, el formato aceptado es DD/MM/YYY'
+    //         });
+    //    }
 
-        if(!timestamp || !nombre || !descripcion || !codigo || !foto || !precio || !stock ||
-            typeof nombre !== 'string' || typeof timestamp !== 'string' || typeof descripcion !== 'string' ||
+        if(!nombre || !descripcion || !codigo || !foto || !precio || !stock ||
+            typeof nombre !== 'string' || typeof descripcion !== 'string' ||
             isNaN(codigo) || typeof foto !== 'string' ||
             isNaN(precio) || isNaN(stock)){
             return res.status(400).json({

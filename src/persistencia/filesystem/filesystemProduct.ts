@@ -43,7 +43,7 @@ export const leer = async() => {
 }
 
 // Ingresa registros a archivo txt
-export const guardar = async(timestamp: Date, nombre: string, descripcion: string,
+export const guardar = async(timestamp: string, nombre: string, descripcion: string,
                              codigo: number, foto: string, precio: number, stock:number) => {
     try {
         let reg = [];

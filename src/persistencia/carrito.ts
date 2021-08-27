@@ -1,18 +1,20 @@
 import { leer, guardar, elimina } from './filesystem/filesystemCarrito';
-import { Producto } from './productos';
+import { Productos } from './productos';
+import moment from 'moment';
+
 
 let carrito:Carrito[] = [];
+const fecha =  moment().format(); 
 
 interface addCarrito  {
     id: number,
-    timestamp: Date,
-    product: Producto,
+    product: Productos,
 }
 
 interface Carrito {
     id: number,
     timestamp: Date,
-    product: Producto,
+    product: Productos,
 }
 
 const obtieneDataCarrito = async () => {
@@ -39,7 +41,8 @@ class Carrito {
     }
 
     async add(data: addCarrito){
-        const newCarrito = await guardar(data.timestamp, data.product);
+        data.product.timestamp = new Date(fecha);
+        const newCarrito = await guardar(new Date(fecha), data.product);
         return newCarrito;
     }
 

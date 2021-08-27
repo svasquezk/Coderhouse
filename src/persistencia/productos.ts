@@ -1,6 +1,8 @@
 import { leer, guardar, elimina, update } from './filesystem/filesystemProduct';
+import moment from 'moment';
 
-let productos:Producto[] = [];
+let productos:Productos[] = [];
+const fecha =  moment().format(); 
 
 interface addProduct {
     timestamp: Date;
@@ -12,30 +14,6 @@ interface addProduct {
     stock: number;
 }
 
-interface addProductCart {
-    id: number;
-    timestamp: Date;
-    nombre: string,
-    descripcion: string;
-    codigo: number;
-    foto: string;
-    precio: number;
-    stock: number;
-}
-
-export interface Producto {
-    id: number;
-    timestamp: Date;
-    nombre: string;
-    descripcion: string;
-    codigo: number;
-    foto: string;
-    precio: number;
-    stock: number;
-
-}
-
-
 const obtieneDataProd = async () => {
     let lProductos = [];
     lProductos = await leer();
@@ -46,6 +24,14 @@ const obtieneDataProd = async () => {
 }
 
 export class Productos {
+    id!: number;
+    timestamp!: Date;
+    nombre!: string;
+    descripcion!: string;
+    codigo!: number;
+    foto!: string;
+    precio!: number;
+    stock!: number;
 
     async find(id: number) {
         productos = await obtieneDataProd();          
@@ -63,17 +49,17 @@ export class Productos {
 
     async add(data: addProduct){
         // Guarda el registro nuevo
-        const newProdAdd = await guardar( data.timestamp, data.nombre, data.descripcion, data.codigo, data.foto,  data.precio, data.stock);
+        const newProdAdd = await guardar(fecha, data.nombre, data.descripcion, data.codigo, data.foto,  data.precio, data.stock);
         console.log('fina ->', newProdAdd);
         return newProdAdd;
     }
 
     async update(id:number, data: addProduct){
 
-        const lProductosUp:Producto[] = await obtieneDataProd();          
+        const lProductosUp:Productos[] = await obtieneDataProd();          
 
         const indexProd = lProductosUp.findIndex(p => p.id === id);
-        lProductosUp[indexProd].timestamp = data.timestamp;
+        lProductosUp[indexProd].timestamp = new Date(fecha);
         lProductosUp[indexProd].nombre = data.nombre;
         lProductosUp[indexProd].descripcion = data.descripcion;
         lProductosUp[indexProd].codigo = data.codigo;
@@ -93,20 +79,6 @@ export class Productos {
        productos = await obtieneDataProd();  
        const lProd = productos.filter(p => p.id !== id);
        await elimina(lProd);
-    }
-
-    addCartProduc(data: addProductCart) {
-            const addProdCart = {
-                id       : data.id,
-                timestamp: data.timestamp,
-                nombre  :  data.nombre, 
-                descripcion: data.descripcion,
-                codigo  : data.codigo,
-                foto    : data.nombre,
-                precio  : data.precio,
-                stock   : data.stock
-            }
-            return addProdCart;   
     }
 }
 

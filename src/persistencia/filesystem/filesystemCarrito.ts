@@ -1,5 +1,5 @@
 import fs from 'fs';
-import { Producto } from '../productos'
+import { Productos } from '../productos'
 
 const pathArchivo = './carpetaArchivo/carrito.txt';
 
@@ -43,9 +43,11 @@ export const leer = async() => {
 }
 
 // Ingresa registros a archivo txt
-export const guardar = async(timestamp: Date, producto: Producto) => {
+export const guardar = async(timestamp: Date, producto: Productos) => {
     try {
         let reg = [];
+
+        console.log('Producto --> ', producto);
 
         // Lee los registros ingresados
         const data = fs.readFileSync(pathArchivo, 'utf-8');

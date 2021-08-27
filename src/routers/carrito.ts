@@ -9,7 +9,7 @@ router.get('/listar', cartController.getCart)
 
 router.get('/listar/:id', cartController.getCart)
 
-router.post('/agregar',prodController.checkAddProduct, cartController.checkAddCart, cartController.addCart)
+router.post('/agregar',prodController.checkAddProduct, cartController.addCart)
 
 router.delete('/borrar/:id',  cartController.deleteCart)
 

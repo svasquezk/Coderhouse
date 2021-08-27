@@ -25,25 +25,6 @@ class Carrito {
         }
     }
 
-    checkAddCart(req: Request, res: Response, next: NextFunction){
-        const {timestamp } = req.body;
-        if(!timestamp) {
-            return res.status(400).json({
-                msg: 'Campos del body invalidos'
-            });
-        }
-
-        //Valida el campo fecha
-        let valFecha = moment(timestamp, 'DD/MM/YYYY',true).isValid();
-        if(!valFecha) {
-            return res.status(400).json({
-                msg: 'Campo timestamp es invalidos, el formato aceptado es DD/MM/YYY'
-            });
-        }
-
-        next();
-    }
-
     async addCart(req: Request, res: Response) {
         const newCartProd = await carritoPersistencia.add(req.body);
         res.json({
@@ -61,7 +42,7 @@ class Carrito {
             })
         }
 
-        const carrito = carritoPersistencia.find(id);
+        const carrito = await carritoPersistencia.find(id);
         if(!carrito) {
             return res.status(404).json({
                 msg: "Carrito no existe"
