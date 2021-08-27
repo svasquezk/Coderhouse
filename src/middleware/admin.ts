@@ -1,14 +1,13 @@
 import { NextFunction, Request, Response } from "express";
 
-const admin = true;
+const admin = false;
 
 export const checkAdmin = (req: Request, res: Response,next: NextFunction) => {
     if(admin)
     next();
     else {
-    
-       const rutaRouter = 'aqíVaLaRuta';
-       const metodo = 'aqíVaElMetodo';
+       const rutaRouter =  `${req.headers.host}${req.baseUrl}`;
+       const metodo = req.route.path;
 
        res.status(401).json({
            error: '-1',
