@@ -7,6 +7,6 @@ const express_1 = require("express");
 const producto_1 = __importDefault(require("./producto"));
 const carrito_1 = __importDefault(require("./carrito"));
 const router = express_1.Router();
-router.use('/products', producto_1.default);
-router.use('/cart', carrito_1.default);
+router.use('/productos', producto_1.default);
+router.use('/carrito', carrito_1.default);
 exports.default = router;
