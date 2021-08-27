@@ -1,24 +1,20 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.prodController = void 0;
 const productos_1 = require("../persistencia/productos");
-const moment_1 = __importDefault(require("moment"));
 class Producto {
     constructor() {
         // Valida ingreso de datos al agregar un producto
         this.checkAddProduct = (req, res, next) => {
-            const { timestamp, nombre, descripcion, codigo, foto, precio, stock } = req.body.product || req.body;
+            const { nombre, descripcion, codigo, foto, precio, stock } = req.body.product || req.body;
             //Valida el campo fecha
-            let valFecha = moment_1.default(timestamp, 'DD/MM/YYYY', true).isValid();
-            if (!valFecha) {
-                return res.status(400).json({
-                    msg: 'Campo timestamp es invalidos, el formato aceptado es DD/MM/YYY'
-                });
-            }
-            if (!timestamp || !nombre || !descripcion || !codigo || !foto || !precio || !stock ||
+            //    let valFecha = moment(timestamp, 'DD/MM/YYYY',true).isValid();
+            //    if(!valFecha) {
+            //         return res.status(400).json({
+            //             msg: 'Campo timestamp es invalidos, el formato aceptado es DD/MM/YYY'
+            //         });
+            //    }
+            if (!nombre || !descripcion || !codigo || !foto || !precio || !stock ||
                 typeof nombre !== 'string' || typeof descripcion !== 'string' ||
                 isNaN(codigo) || typeof foto !== 'string' ||
                 isNaN(precio) || isNaN(stock)) {
@@ -31,21 +27,21 @@ class Producto {
         // Valida el ingreso de datos a actualizar
         this.checkUpdateProduct = (req, res, next) => {
             const id = Number(req.params.id);
-            const { timestamp, nombre, descripcion, codigo, foto, precio, stock } = req.body;
+            const { nombre, descripcion, codigo, foto, precio, stock } = req.body;
             if (isNaN(id)) {
                 return res.status(400).json({
                     msg: 'ID es invalidos'
                 });
             }
-            //Valida el campo fecha
-            let valFecha = moment_1.default(timestamp, 'DD/MM/YYYY', true).isValid();
-            if (!valFecha) {
-                return res.status(400).json({
-                    msg: 'Campo timestamp es invalidos, el formato aceptado es DD/MM/YYY'
-                });
-            }
-            if (!timestamp || !nombre || !descripcion || !codigo || !foto || !precio || !stock ||
-                typeof nombre !== 'string' || typeof timestamp !== 'string' || typeof descripcion !== 'string' ||
+            //    //Valida el campo fecha
+            //    let valFecha = moment(timestamp, 'DD/MM/YYYY',true).isValid();
+            //    if(!valFecha) {
+            //         return res.status(400).json({
+            //             msg: 'Campo timestamp es invalidos, el formato aceptado es DD/MM/YYY'
+            //         });
+            //    }
+            if (!nombre || !descripcion || !codigo || !foto || !precio || !stock ||
+                typeof nombre !== 'string' || typeof descripcion !== 'string' ||
                 isNaN(codigo) || typeof foto !== 'string' ||
                 isNaN(precio) || isNaN(stock)) {
                 return res.status(400).json({

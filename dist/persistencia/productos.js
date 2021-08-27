@@ -1,8 +1,13 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.producPersistencia = exports.Productos = void 0;
 const filesystemProduct_1 = require("./filesystem/filesystemProduct");
+const moment_1 = __importDefault(require("moment"));
 let productos = [];
+const fecha = moment_1.default().format();
 const obtieneDataProd = async () => {
     let lProductos = [];
     lProductos = await filesystemProduct_1.leer();
@@ -25,14 +30,14 @@ class Productos {
     }
     async add(data) {
         // Guarda el registro nuevo
-        const newProdAdd = await filesystemProduct_1.guardar(data.timestamp, data.nombre, data.descripcion, data.codigo, data.foto, data.precio, data.stock);
+        const newProdAdd = await filesystemProduct_1.guardar(fecha, data.nombre, data.descripcion, data.codigo, data.foto, data.precio, data.stock);
         console.log('fina ->', newProdAdd);
         return newProdAdd;
     }
     async update(id, data) {
         const lProductosUp = await obtieneDataProd();
         const indexProd = lProductosUp.findIndex(p => p.id === id);
-        lProductosUp[indexProd].timestamp = data.timestamp;
+        lProductosUp[indexProd].timestamp = new Date(fecha);
         lProductosUp[indexProd].nombre = data.nombre;
         lProductosUp[indexProd].descripcion = data.descripcion;
         lProductosUp[indexProd].codigo = data.codigo;
@@ -49,19 +54,6 @@ class Productos {
         productos = await obtieneDataProd();
         const lProd = productos.filter(p => p.id !== id);
         await filesystemProduct_1.elimina(lProd);
-    }
-    addCartProduc(data) {
-        const addProdCart = {
-            id: data.id,
-            timestamp: data.timestamp,
-            nombre: data.nombre,
-            descripcion: data.descripcion,
-            codigo: data.codigo,
-            foto: data.nombre,
-            precio: data.precio,
-            stock: data.stock
-        };
-        return addProdCart;
     }
 }
 exports.Productos = Productos;

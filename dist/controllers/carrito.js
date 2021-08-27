@@ -1,11 +1,7 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.cartController = void 0;
 const carrito_1 = require("../persistencia/carrito");
-const moment_1 = __importDefault(require("moment"));
 class Carrito {
     async getCart(req, res) {
         const { id } = req.params;
@@ -27,22 +23,6 @@ class Carrito {
             });
         }
     }
-    checkAddCart(req, res, next) {
-        const { timestamp } = req.body;
-        if (!timestamp) {
-            return res.status(400).json({
-                msg: 'Campos del body invalidos'
-            });
-        }
-        //Valida el campo fecha
-        let valFecha = moment_1.default(timestamp, 'DD/MM/YYYY', true).isValid();
-        if (!valFecha) {
-            return res.status(400).json({
-                msg: 'Campo timestamp es invalidos, el formato aceptado es DD/MM/YYY'
-            });
-        }
-        next();
-    }
     async addCart(req, res) {
         const newCartProd = await carrito_1.carritoPersistencia.add(req.body);
         res.json({
@@ -57,7 +37,7 @@ class Carrito {
                 msg: "ID Invalido"
             });
         }
-        const carrito = carrito_1.carritoPersistencia.find(id);
+        const carrito = await carrito_1.carritoPersistencia.find(id);
         if (!carrito) {
             return res.status(404).json({
                 msg: "Carrito no existe"

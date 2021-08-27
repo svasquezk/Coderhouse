@@ -46,6 +46,7 @@ exports.leer = leer;
 const guardar = async (timestamp, producto) => {
     try {
         let reg = [];
+        console.log('Producto --> ', producto);
         // Lee los registros ingresados
         const data = fs_1.default.readFileSync(pathArchivo, 'utf-8');
         // Si los reg. existen suma 

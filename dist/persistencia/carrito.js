@@ -1,8 +1,13 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.carritoPersistencia = void 0;
 const filesystemCarrito_1 = require("./filesystem/filesystemCarrito");
+const moment_1 = __importDefault(require("moment"));
 let carrito = [];
+const fecha = moment_1.default().format();
 const obtieneDataCarrito = async () => {
     let lCarrito = [];
     lCarrito = await filesystemCarrito_1.leer();
@@ -24,7 +29,8 @@ class Carrito {
         return carrito;
     }
     async add(data) {
-        const newCarrito = await filesystemCarrito_1.guardar(data.timestamp, data.product);
+        data.product.timestamp = new Date(fecha);
+        const newCarrito = await filesystemCarrito_1.guardar(new Date(fecha), data.product);
         return newCarrito;
     }
     async delete(id) {
