@@ -6,8 +6,8 @@ const checkAdmin = (req, res, next) => {
     if (admin)
         next();
     else {
-        const rutaRouter = 'aqíVaLaRuta';
-        const metodo = 'aqíVaElMetodo';
+        const rutaRouter = `${req.headers.host}${req.baseUrl}`;
+        const metodo = req.route.path;
         res.status(401).json({
             error: '-1',
             descripcion: `ruta ${rutaRouter} método ${metodo} no autorizada`

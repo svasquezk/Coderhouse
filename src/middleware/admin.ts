@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 
-const admin = false;
+const admin = true;
 
 export const checkAdmin = (req: Request, res: Response,next: NextFunction) => {
     if(admin)
