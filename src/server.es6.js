@@ -5,9 +5,6 @@ import { initWsServer } from './service/socket';
 // import routerProductos from './routers/producto-api';
 import path from 'path';
 
-
-console.log('Hola Sandra');
-
 const app = express();
 const myServer = http.Server(app);
 

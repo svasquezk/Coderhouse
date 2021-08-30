@@ -125,4 +125,3 @@ router.get('/vista', async(req, res) => {
 
 
 export default router;
-// module.exports = router;

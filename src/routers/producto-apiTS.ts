@@ -1,11 +1,12 @@
-const express = require('express');
+import express from'express';
+import { prodPersistencia } from '../productoTS';
+
 const router = express.Router();
-const producto = require('../producto')
 
 
 // Lista los array de productos
 router.get('/listar', (req, res) => {
-    producto.obtieneProductos()
+    prodPersistencia.obtieneProductos()
             .then((resp) => {
                 if(!resp) {
                     res.json({
@@ -26,8 +27,8 @@ router.get('/listar', (req, res) => {
 // Obtiene productos por id
 router.get('/listar/:id', (req, res) => {
     const idProd = Number(req.params.id);
-
-    producto.obtieneProductoxID(idProd)
+    
+    prodPersistencia.obtieneProductoxID(idProd)
     .then((respProd) => {
         if(!respProd) {
             res.json({
@@ -48,25 +49,14 @@ router.get('/listar/:id', (req, res) => {
 router.post('/guardar', (req, res) => {
     const prod =  req.body;
  
-    producto.guardaProducto(prod).then((result) => 
+    prodPersistencia.guardaProducto(prod).then((result) => 
     { 
-        console.log('AQUI');
-        // Se redirecciona a la API Vista
         res.redirect('/api/productos/vista');
-        // res.json({
-        //     id: result.id,
-        //     title: result.title,
-        //     price: result.price,
-        //     thumbnail: result.thumbnail
-        // });
-
     }).catch(() => {
         res.json({
             msj: 'Error al ingresar nuevo registro'
         })
     }) 
-
-   
 })
 
 // Actualiza producto x id (retorna prod. actualizado)
@@ -76,7 +66,7 @@ router.put('/actualizar/:id', async(req, res) => {
     const price = req.body.price; 
     const thumbnail = req.body.thumbnail; 
  
-    const result = await producto.actualizaProducto(id, title, price, thumbnail)
+    const result = await prodPersistencia.actualizaProducto(id, title, price, thumbnail)
     if(result) {
         res.status(200).json({
             data: result
@@ -91,7 +81,7 @@ router.put('/actualizar/:id', async(req, res) => {
 // Elimina producto x id (retorna prod. eliminado)
 router.delete('/borrar/:id', async(req, res) => {
     const id = Number(req.params.id);
-    const result = await producto.eliminaProducto(id);
+    const result = await prodPersistencia.eliminaProducto(id);
     if(result) {
         res.status(200).json({
             data: result
@@ -107,7 +97,7 @@ router.delete('/borrar/:id', async(req, res) => {
 // config página principal de handlerbar
 router.get('/vista', async(req, res) => {
     console.log('*************************');
-    const lprod = await  producto.obtieneProductos();
+    const lprod = await  prodPersistencia.obtieneProductos();
     if(!lprod) {
         const listaProd = {
             tieneProd : false,
@@ -123,5 +113,4 @@ router.get('/vista', async(req, res) => {
     
 })
 
-
-module.exports = router;
+export default router;

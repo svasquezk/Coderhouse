@@ -5,8 +5,6 @@ import {initWsServer} from './service/socketTS';
 import routerProductos from './routers/producto-apiTS';
 import path from 'path';
 
-console.log('Hola Sandra TS wii');
-
 
 const app = express();
 // const myServer = http.Server(app);

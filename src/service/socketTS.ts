@@ -8,9 +8,7 @@ const data = {
     text: undefined,
 };
 
-
-//export const initWsServer = (server) => {
-initWsServer = (server) => {
+export const initWsServer = (server) => {
     const io = socketIo(server);
 
     io.on('connection', (socket) => {
@@ -58,9 +56,4 @@ initWsServer = (server) => {
     });
 
     return io;
-}
-
-
-module.exports = {
-    initWsServer
 }
