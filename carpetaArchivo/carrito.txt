@@ -28,8 +28,8 @@
 		}
 	},
 	{
-		"id": 3,
-		"timestamp": "2021-08-27T21:05:02.000Z",
+		"id": 4,
+		"timestamp": "2021-08-27T21:21:08.000Z",
 		"product": {
 			"id": 1,
 			"nombre": "Producto1",
@@ -38,7 +38,7 @@
 			"foto": "url",
 			"precio": 1200,
 			"stock": 20,
-			"timestamp": "2021-08-27T21:05:02.000Z"
+			"timestamp": "2021-08-27T21:21:08.000Z"
 		}
 	}
 ]

@@ -7,6 +7,10 @@
     "build": "node_modules/.bin/tsc",
     "start": "node dist/index.js",
     "dev": "nodemon",
+    "migrate:db": "npx knex migrate:latest --env development",
+    "rollback:db": "npx knex migrate:rollback --env development",
+    "seed:db": "npx knex seed:run --env development",
+    "iniciar:db": "npm run rollback:db && npm run migrate:db && npm run seed:db",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -20,6 +24,9 @@
   },
   "dependencies": {
     "express": "^4.17.1",
-    "moment": "^2.29.1"
+    "knex": "^0.95.11",
+    "moment": "^2.29.1",
+    "mysql": "^2.18.1",
+    "sqlite3": "^5.0.2"
   }
 }

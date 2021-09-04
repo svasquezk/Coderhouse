@@ -1,6 +1,6 @@
 import {Request, Response, NextFunction} from 'express';
-import {producPersistencia} from '../persistencia/productos'
-import moment from 'moment';
+// import {producPersistencia} from '../persistencia/filesystemPersistencia/productos';
+import {producPersistencia} from '../persistencia/SQL/productos'
 
 class Producto {
 
@@ -35,14 +35,6 @@ class Producto {
                     stock
              } = req.body.product || req.body;
 
-       //Valida el campo fecha
-    //    let valFecha = moment(timestamp, 'DD/MM/YYYY',true).isValid();
-    //    if(!valFecha) {
-    //         return res.status(400).json({
-    //             msg: 'Campo timestamp es invalidos, el formato aceptado es DD/MM/YYY'
-    //         });
-    //    }
-
         if(!nombre || !descripcion || !codigo || !foto || !precio || !stock ||
             typeof nombre !== 'string' ||  typeof descripcion !== 'string' ||
             isNaN(codigo) || typeof foto !== 'string' ||
@@ -57,6 +49,8 @@ class Producto {
 
     // Valida el ingreso de datos a actualizar
     checkUpdateProduct = (req: Request, res: Response, next: NextFunction) => {
+
+        console.log('checkUpdateProduct');
         const id = Number(req.params.id)
         const { nombre, 
                 descripcion,
@@ -71,14 +65,6 @@ class Producto {
                 msg: 'ID es invalidos'
             });
         }
-
-    //    //Valida el campo fecha
-    //    let valFecha = moment(timestamp, 'DD/MM/YYYY',true).isValid();
-    //    if(!valFecha) {
-    //         return res.status(400).json({
-    //             msg: 'Campo timestamp es invalidos, el formato aceptado es DD/MM/YYY'
-    //         });
-    //    }
 
         if(!nombre || !descripcion || !codigo || !foto || !precio || !stock ||
             typeof nombre !== 'string' || typeof descripcion !== 'string' ||
@@ -102,7 +88,8 @@ class Producto {
 
     async updateProducts(req: Request, res: Response) {
         const {id} = req.params;
-        const newUpProduc = req.body;       
+        const newUpProduc = req.body;  
+       
         const upProduc = await producPersistencia.update(Number(id), newUpProduc);
         res.json({
             msg: 'Producto actualizado',

@@ -1,5 +1,5 @@
 // Agrega la lógica del server
-import express from 'express';
+import express, {NextFunction, Request, Response}  from 'express';
 import path from 'path';
 import * as http from 'http';
 import apiRouter from '../routers/index';
@@ -12,6 +12,13 @@ app.use(express.static(publicFolderPath));
 app.use(express.json());
 app.use('/api', apiRouter);
 
-const myServer = new http.Server(app);
+app.use(() => (err: Error, req: Request, res: Response, next: NextFunction) => {
+    return res.status(500).json({
+        msg: 'Ocurrió un error en la aplicación', 
+        error: err.message
+    });
+});
 
+
+const myServer = new http.Server(app);
 export default myServer;
