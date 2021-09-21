@@ -1,6 +1,8 @@
 import {Request, Response, NextFunction} from 'express';
 // import {producPersistencia} from '../persistencia/filesystemPersistencia/productos';
-import {producPersistencia} from '../persistencia/SQL/productos'
+// import {producPersistencia} from '../persistencia/SQL/productos'
+import {producPersistencia } from '../persistencia/MongoBD/producto'
+
 
 class Producto {
 
@@ -8,7 +10,7 @@ class Producto {
         const {id} = req.params;
 
         if(id){
-            const producto = await producPersistencia.get(Number(id));
+            const producto = await producPersistencia.get(id);
               if(!producto)
                   return res.status(404).json({
                       msg: 'Producto no encontrado'
@@ -51,7 +53,7 @@ class Producto {
     checkUpdateProduct = (req: Request, res: Response, next: NextFunction) => {
 
         console.log('checkUpdateProduct');
-        const id = Number(req.params.id)
+        const id = req.params.id
         const { nombre, 
                 descripcion,
                 codigo,
@@ -60,7 +62,7 @@ class Producto {
                 stock
             } = req.body;
 
-            if(isNaN(id)) {
+            if(!id) {
             return res.status(400).json({
                 msg: 'ID es invalidos'
             });
@@ -90,7 +92,7 @@ class Producto {
         const {id} = req.params;
         const newUpProduc = req.body;  
        
-        const upProduc = await producPersistencia.update(Number(id), newUpProduc);
+        const upProduc = await producPersistencia.update(id, newUpProduc);
         res.json({
             msg: 'Producto actualizado',
             data: upProduc
@@ -98,7 +100,7 @@ class Producto {
     }
 
     async deleteProducts(req: Request, res: Response) {
-        const id = Number(req.params.id);
+        const id = req.params.id;
         if(!id){
             return res.status(400).json({
                 msg: "ID Invalido"
