@@ -1,0 +1,20 @@
+<form action="/api/user/logout" method="GET">
+    <div class="alert alert-info" role="alert">
+      <span id="nomUserLogout"></span>
+    </div>
+  </form>
+
+  <script>
+    const valores = window.location.search;
+    const urlParams = new URLSearchParams(valores);
+    const usuarioLog = urlParams.get('user');
+    console.log('--> ', usuarioLog);
+
+    var htmluser = `<div><strong>${usuarioLog}</strong></div>`;
+    document.getElementById('nomUserLogout').innerHTML =  `Hasta luego, ${usuarioLog.toString()} `
+
+    setTimeout(() => {
+        window.location.href = "/login.html";
+    }, 2000);
+
+  </script>
