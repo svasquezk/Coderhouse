@@ -4,10 +4,6 @@ import { Productos } from '../persistencia/SQL/productos';
 
 class DB {
   constructor() {
-    // const environment = process.env.NODE_ENV || dbConfig.development;
-    // console.log(`SETTING ${dbConfig.development} DB`);
-    // const options = environment;
-    // this.connection = knex(options);
   }
 
   sqLiteDB: any;
@@ -50,7 +46,7 @@ class DB {
       if(!exists) {
         this.mySqlDB.schema.createTable('productos',
           (productosTable: { increments: (arg0: string) => void; string: (arg0: string) => { (): any; new(): any; notNullable: { (): void; new(): any; }; }; integer: (arg0: string) => { (): any; new(): any; notNullable: { (): void; new(): any; }; unsigned: { (): { (): any; new(): any; references: { (arg0: string): { (): any; new(): any; inTable: { (arg0: string): void; new(): any; }; }; new(): any; }; }; new(): any; }; }; decimal: (arg0: string, arg1: number, arg2: number) => void; timestamp: (arg0: string) => { (): any; new(): any; defaultTo: { (arg0: any): void; new(): any; }; }; }) => {
-            productosTable.increments('id');
+            productosTable.increments('_id');
             productosTable.string('nombre').notNullable();
             productosTable.string('descripcion').notNullable();
             productosTable.integer('codigo').notNullable();
@@ -62,7 +58,7 @@ class DB {
             productosTable
               .integer('category_id')
               .unsigned()
-              .references('id')
+              .references('_id')
               .inTable('categorias');
           })
           .then(() => { console.log('Se creo');});
@@ -93,7 +89,7 @@ class DB {
 
     table.insert(data).then(() => { console.log('Productos agregados');});
   
-    return table.max('id').then((row:any) =>{ return row } )
+    return table.max('_id').then((row:any) =>{ return row } )
   }
 
   update(tableName:string, id: number, data:any) {

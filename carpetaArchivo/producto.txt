@@ -1,8 +1,8 @@
 [
 	{
-		"id": 1,
-		"timestamp": "2021-08-27T21:02:25.000Z",
-		"nombre": "lapiz1Actu",
+		"_id": 2,
+		"timestamp": "2021-09-28T21:40:26.000Z",
+		"nombre": "lapiz1Actu2",
 		"descripcion": "desc",
 		"codigo": 82118,
 		"foto": "fotoActu",
@@ -10,33 +10,33 @@
 		"stock": 5
 	},
 	{
-		"id": 2,
-		"timestamp": "2021-08-27T16:23:16-04:00",
-		"nombre": "Producto1",
-		"descripcion": "desProd",
-		"codigo": 123,
-		"foto": "url",
-		"precio": 1200,
-		"stock": 20
+		"_id": 3,
+		"timestamp": "2021-09-28T21:40:26.000Z",
+		"nombre": "lapiz1Actu3",
+		"descripcion": "desc",
+		"codigo": 82118,
+		"foto": "fotoActu",
+		"precio": 200,
+		"stock": 5
 	},
 	{
-		"id": 3,
-		"timestamp": "2021-08-27T16:31:12-04:00",
-		"nombre": "Producto1",
-		"descripcion": "desProd",
-		"codigo": 123,
-		"foto": "url",
-		"precio": 1200,
-		"stock": 20
+		"_id": 4,
+		"timestamp": "2021-09-28T21:40:26.000Z",
+		"nombre": "lapiz1Actu4",
+		"descripcion": "desc",
+		"codigo": 82118,
+		"foto": "fotoActu",
+		"precio": 200,
+		"stock": 5
 	},
 	{
-		"id": 4,
-		"timestamp": "2021-08-27T17:21:08-04:00",
-		"nombre": "Producto1",
-		"descripcion": "desProd",
-		"codigo": 123,
-		"foto": "url",
-		"precio": 1200,
-		"stock": 20
+		"_id": "5",
+		"timestamp": "2021-09-28T21:40:26.000Z",
+		"nombre": "lapiz1Actu5",
+		"descripcion": "desc",
+		"codigo": 82118,
+		"foto": "fotoActu",
+		"precio": 200,
+		"stock": 5
 	}
 ]

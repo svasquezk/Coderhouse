@@ -1,5 +1,5 @@
 import fs from 'fs';
-import { Productos } from '../productos'
+import { ProductoI } from '../../../model/productos/producto.interface'
 
 const pathArchivo = './carpetaArchivo/carrito.txt';
 
@@ -43,7 +43,7 @@ export const leer = async() => {
 }
 
 // Ingresa registros a archivo txt
-export const guardar = async(timestamp: Date, producto: Productos) => {
+export const guardar = async(timestamp: Date, producto: ProductoI) => {
     try {
         let reg = [];
 

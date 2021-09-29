@@ -1,5 +1,5 @@
-import { leer, guardar, elimina } from './filesystem/filesystemCarrito';
-import { Productos } from './productos';
+import { leer, guardar, elimina } from '../../../persistencia/filesystemPersistencia/filesystem/filesystemCarrito';
+import { ProductoI } from '../../productos/producto.interface';
 import moment from 'moment';
 
 
@@ -8,13 +8,13 @@ const fecha =  moment().format();
 
 interface addCarrito  {
     id: number,
-    product: Productos,
+    product: ProductoI,
 }
 
 interface Carrito {
     id: number,
     timestamp: Date,
-    product: Productos,
+    product: ProductoI,
 }
 
 const obtieneDataCarrito = async () => {

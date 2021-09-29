@@ -1,16 +1,19 @@
-import {Request, Response, NextFunction} from 'express';
+import { Request, Response, NextFunction } from 'express';
 // import {producPersistencia} from '../persistencia/filesystemPersistencia/productos';
 // import {producPersistencia} from '../persistencia/SQL/productos'
-import {producPersistencia } from '../persistencia/MongoBD/producto'
+import { producPersistencia } from '../persistencia/MongoBD/producto'
+import { ProductoQuery } from '../model/productos/producto.interface';
 
+import { prodAPI } from '../apis/productos';
 
 class Producto {
 
     async getProducts(req: Request, res: Response) {
         const {id} = req.params;
+        const {nombre, precio,codigo,stock } = req.query;
 
         if(id){
-            const producto = await producPersistencia.get(id);
+            const producto = await prodAPI.getProductos(id);
               if(!producto)
                   return res.status(404).json({
                       msg: 'Producto no encontrado'
@@ -19,12 +22,27 @@ class Producto {
               res.json({
                   data: producto
                   })
-          } else {
-              const producto = await producPersistencia.get();
-              res.json({
-                  data: producto
-               })
-         }
+        } else {
+            // Obtiene valores de filtro
+            const query: ProductoQuery = {};
+            if(nombre) query.nombre = nombre.toString();
+            if(precio) query.precio = Number(precio);
+            if(codigo) query.codigo = Number(codigo);
+            if(stock)  query.stock  = Number(stock);
+
+            if(Object.keys(query).length) {
+                return res.json({
+                    data: await prodAPI.query(query)
+                })
+            }
+
+            const producto = await prodAPI.getProductos();
+            res.json({
+                data: producto
+            })
+        } 
+
+
     }
 
     // Valida ingreso de datos al agregar un producto
@@ -81,7 +99,7 @@ class Producto {
     }
 
     async addProducts(req: Request, res: Response) {
-        const newProd = await producPersistencia.add(req.body);
+        const newProd = await prodAPI.addProducto(req.body);
         res.json({
             msg: 'Producto agregado con exito',
             data: newProd
@@ -92,7 +110,7 @@ class Producto {
         const {id} = req.params;
         const newUpProduc = req.body;  
        
-        const upProduc = await producPersistencia.update(id, newUpProduc);
+        const upProduc = await prodAPI.updateProduct(id, newUpProduc);
         res.json({
             msg: 'Producto actualizado',
             data: upProduc
@@ -107,14 +125,14 @@ class Producto {
             })
         }
 
-        const producto = await producPersistencia.find(id);
+        const producto = await prodAPI.getProductos(id); 
         if(!producto) {
             return res.status(404).json({
                 msg: "Producto no existe"
             })
         }
 
-        producPersistencia.delete(id);
+        prodAPI.deleteProduct(id);
         res.json({
             msg: 'producto borrado', 
         })
