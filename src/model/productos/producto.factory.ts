@@ -7,7 +7,7 @@ export enum TipoPersistencia {
     FileSystem = 'FS',
     Memoria = 'MEM', 
     MySQL = 'MYSQL',
-    SQLLite3 = 'SQLLITE3',
+    SQLLite3 = 'SQLLITE3', 
     MongoLocal = 'MONGO-LOCAL',
     MongoAtlas = 'MONGO-ATLAS',
     FireBase = 'FIRE-BASE'
