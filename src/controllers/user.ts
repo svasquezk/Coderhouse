@@ -11,6 +11,8 @@ class User {
 
     async login(req: Request, res: Response) {
         const {username } = req.query;
+
+        console.log('DATA -> ', req.query);
         
         req.session.nomUser = username?.toString();
         if(username) { 
